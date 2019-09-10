@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 
-import Layout from "../layout";
+import Layout from "src/components/Base/layout";
 
 const IndexPage = (props) => {
   const { forms } = props.pageContext;

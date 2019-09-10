@@ -1,8 +1,8 @@
 import React from 'react';
 import { Router, Redirect, Link } from '@reach/router';
 
-import FormPage from './FormPage';
-import { getPages } from '../../helpers/data';
+import FormPage from 'src/components/Form/FormPage';
+import { getPages } from 'src/helpers/data';
 
 const FormMainPage = ({name, pages}) => {
   return (
