@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router, Link } from '@reach/router'
+import { Router, Redirect, Link } from '@reach/router';
 
 import FormPage from './FormPage';
 import { getPages } from '../../helpers/data';
@@ -24,12 +24,10 @@ const FormMainPage = ({name, pages}) => {
 };
 
 const FormContainer = (props) => {
-  console.log('~~~ all me props', props)
   const { data } = props.pageContext;
   const { fields, coaConfig: {name, pathPrefix} } = data;
   const pages = getPages(fields, pathPrefix);
 
-  console.log("~~~ my pages", pages)
   return (
     <div>
       <Router>
@@ -45,6 +43,11 @@ const FormContainer = (props) => {
             fields={page.fields}
           />
         ))}
+        <Redirect
+          from={`${pathPrefix}/*`}
+          to={pathPrefix}
+          noThrow
+        />
       </Router>
     </div>
   );
