@@ -15,7 +15,7 @@ exports.createPages = async ({ actions: { createPage } }) => {
 
   createPage({
     path: `/forms`,
-    component: require.resolve("./src/components/Form/FormHome.js"),
+    component: require.resolve("./src/components/Form/Forms.js"),
     context: { forms },
   });
 
