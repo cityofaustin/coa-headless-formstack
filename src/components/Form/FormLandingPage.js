@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from '@reach/router';
+import { useSelector } from 'react-redux';
 
-const FormLandingPage = ({name, pages, lang}) => {
+const FormLandingPage = ({name, pages}) => {
+  const lang = useSelector(state => state.lang);
+
   return (
     <div>
       <h1>{`Welcome to ${name}`}</h1>

@@ -1,0 +1,5 @@
+export const SET_LANG = "SET_LANG";
+
+export const SET_INITIAL_FIELDS = "SET_INITIAL_FIELDS";
+
+export const UPDATE_FIELD_VALUE = "UPDATE_FIELD_VALUE";

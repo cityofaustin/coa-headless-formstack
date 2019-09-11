@@ -1,8 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-const FormPage = (props) => {
-  const { fields, lang } = props;
-  console.log("my Fields:", fields)
+import FieldContainer from 'src/components/Field/containers/FieldContainer';
+
+const FormPage = ({ fields }) => {
+  const lang = useSelector(state => state.lang);
 
   return (
     <div>
@@ -12,8 +14,7 @@ const FormPage = (props) => {
       <ul>
         {fields.map((field, i)=>(
           <li key={i}>
-            {field.section_heading && `Heading: ${field.section_heading}`}
-            {field.label && `Label: ${field.label}`}
+            <FieldContainer field={field} lang={lang}/>
           </li>
         ))}
       </ul>

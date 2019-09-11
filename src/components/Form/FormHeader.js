@@ -1,7 +1,18 @@
 import React from 'react';
 import { Link } from '@reach/router';
+import { useDispatch } from 'react-redux';
 
-const FormHeader = ({ setLang, landingPagePath }) => {
+import { SET_LANG } from 'src/components/Form/redux/actions';
+
+const FormHeader = ({ landingPagePath }) => {
+  const dispatch = useDispatch();
+  const setLang = (lang) => {
+    return dispatch({
+      type: SET_LANG,
+      lang
+    });
+  }
+
   return (
     <div>
       <span onClick={() => setLang("en")}>English</span><br/>
