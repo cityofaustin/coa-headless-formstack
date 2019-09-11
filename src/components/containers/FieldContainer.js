@@ -1,15 +1,17 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-const FieldContainer = ({field, lang}) => {
+import FieldRouter from 'src/components/FormPage/FieldRouter';
+import 'src/components/containers/FieldContainer.scss';
+
+const FieldContainer = ({ field }) => {
   console.log(`${field.id} info:`, field)
   const value = useSelector(state => state.fields[field.id]);
 
   return (
-    <div>
-      {field.section_heading && `Heading: ${field.section_heading}`}
-      {field.label && `Label: ${field.label}`}
-      {`  Value is [${value}]`}
+    <div className='coa-FieldContainer__container'>
+      {field.label}
+      <FieldRouter field={field}/>
     </div>
   );
 };

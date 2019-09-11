@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Router, Redirect } from '@reach/router';
 
-import FormPage from 'src/components/containers/FormPage';
+import FormPage from 'src/components/FormPage/FormPage';
 import FormLandingPage from 'src/components/sections/FormLandingPage';
 import FormHeader from 'src/components/sections/FormHeader';
 import { getPages } from 'src/helpers/data';
