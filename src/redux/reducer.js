@@ -2,7 +2,7 @@ import {
   SET_INITIAL_FIELDS,
   UPDATE_FIELD_VALUE,
   SET_LANG,
-} from 'src/components/Form/redux/actions';
+} from 'src/redux/actions';
 
 const reducer = (state, action) => {
   switch (action.type) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import FieldContainer from 'src/components/Field/containers/FieldContainer';
+import FieldContainer from 'src/components/containers/FieldContainer';
 
 const FormPage = ({ fields }) => {
   const lang = useSelector(state => state.lang);

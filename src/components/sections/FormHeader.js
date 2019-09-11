@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from '@reach/router';
 import { useDispatch } from 'react-redux';
 
-import { SET_LANG } from 'src/components/Form/redux/actions';
+import { SET_LANG } from 'src/redux/actions';
 
 const FormHeader = ({ landingPagePath }) => {
   const dispatch = useDispatch();

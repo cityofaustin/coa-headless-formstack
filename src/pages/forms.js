@@ -1,14 +1,12 @@
 import React from "react";
 import { Link } from "gatsby";
 
-import Layout from "src/components/Base/layout";
-
 const AllForms = (props) => {
   const { forms } = props.pageContext;
   console.log("What are my forms?", forms)
 
   return (
-    <Layout>
+    <div>
       <h1>Here are all of the forms</h1>
       <ul>
         {forms.map((form, i)=>(
@@ -19,7 +17,7 @@ const AllForms = (props) => {
           </li>
         ))}
       </ul>
-    </Layout>
+    </div>
   );
 };
 
