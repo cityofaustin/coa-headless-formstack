@@ -31,7 +31,7 @@ exports.createPages = async ({ actions: { createPage } }) => {
     createPage({
       path: `/forms/${form.name}`,
       matchPath: `/forms/${form.name}/*`, // Allows dynamic routing
-      component: require.resolve("./src/components/containers/FormContainer.js"),
+      component: require.resolve("./src/components/containers/FormRoot.js"),
       context: { data },
     })
   }));

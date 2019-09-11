@@ -1,36 +1,33 @@
 import React, { useEffect } from 'react';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { useDispatch } from 'react-redux';
 import { Router, Redirect } from '@reach/router';
 
 import FormPage from 'src/components/containers/FormPage';
 import FormLandingPage from 'src/components/sections/FormLandingPage';
 import FormHeader from 'src/components/sections/FormHeader';
-import reducer from 'src/redux/reducer';
 import { getPages } from 'src/helpers/data';
-
-const store = createStore(reducer, {
-  lang: "en",
-  fields: {},
-});
+import { SET_INITIAL_FIELDS } from 'src/redux/actions';
 
 const FormContainer = (props) => {
+  const dispatch = useDispatch();
   const { data } = props.pageContext;
   const { fields, coaConfig: {name, pathPrefix} } = data;
   const pages = getPages(fields, pathPrefix);
-  console.log("fields", fields);
 
   // Populate our redux store with initial values
   useEffect(()=>{
     const initialFieldValues = fields.reduce((initialFieldValues, field)=>{
       initialFieldValues[field.id]=null;
       return initialFieldValues;
-    },{})
-    console.log("~~~~ highly effective")
-  },[fields]);
+    },{});
+    dispatch({
+      type: SET_INITIAL_FIELDS,
+      fields: initialFieldValues,
+    });
+  },[dispatch, fields]);
 
   return (
-    <Provider store={store}>
+    <div>
       <FormHeader
         landingPagePath={pathPrefix}
       />
@@ -53,7 +50,7 @@ const FormContainer = (props) => {
           noThrow
         />
       </Router>
-    </Provider>
+    </div>
   );
 };
 
