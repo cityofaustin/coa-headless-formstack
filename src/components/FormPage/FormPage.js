@@ -1,10 +1,9 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import FormPageHeader from 'src/components/FormPage/Header';
-import FormPageSectionHeading from 'src/components/FormPage/SectionHeading';
+import SectionHeading from 'src/components/FormPage/SectionHeading';
 import FieldContainer from 'src/components/containers/FieldContainer';
-import FormPageFooter from 'src/components/FormPage/Footer';
+import FooterNav from 'src/components/FormPage/FooterNav';
 
 const FormPage = ({ pageNumber, fields, landingPagePath, pages }) => {
   const lang = useSelector(state => state.lang);
@@ -21,13 +20,14 @@ const FormPage = ({ pageNumber, fields, landingPagePath, pages }) => {
   return (
     <div>
       <span>This page is in {lang}</span>
-      <FormPageHeader
+      <SectionHeading
+        mainHeading={true}
         field={header}
       />
       {remainingFields.map((field, i)=>{
         if (field.type === "section") {
           return (
-            <FormPageSectionHeading
+            <SectionHeading
               key={i}
               field={field}
             />
@@ -41,7 +41,7 @@ const FormPage = ({ pageNumber, fields, landingPagePath, pages }) => {
           )
         }
       })}
-      <FormPageFooter
+      <FooterNav
         pageNumber={pageNumber}
         landingPagePath={landingPagePath}
         pages={pages}

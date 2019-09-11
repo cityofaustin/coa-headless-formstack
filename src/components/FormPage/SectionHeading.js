@@ -1,7 +1,9 @@
 import React from 'react';
 
-const FormPageSectionHeading = ({ field }) => (
-  <h2>{field.section_heading}</h2>
-);
+const SectionHeading = ({ mainHeading, field }) => {
+  return mainHeading ?
+    <h1>{field.section_heading}</h1> :
+    <h2>{field.section_heading}</h2>
+};
 
-export default FormPageSectionHeading;
+export default SectionHeading;
