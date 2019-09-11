@@ -14,10 +14,12 @@ const FormContainer = (props) => {
   const { fields, coaConfig: {name, pathPrefix} } = data;
   const pages = getPages(fields, pathPrefix);
 
-  // Populate our redux store with initial values
+  // Populate our redux store with initial values for each form field
   useEffect(()=>{
     const initialFieldValues = fields.reduce((initialFieldValues, field)=>{
-      initialFieldValues[field.id]=null;
+      if (field.type !== "section") {
+        initialFieldValues[field.id]=null;
+      }
       return initialFieldValues;
     },{});
     dispatch({
@@ -40,8 +42,11 @@ const FormContainer = (props) => {
         {pages.map((page, i)=>(
           <FormPage
             key={i}
+            pageNumber={i}
             path={page.path}
             fields={page.fields}
+            pages={pages}
+            landingPagePath={pathPrefix}
           />
         ))}
         <Redirect
