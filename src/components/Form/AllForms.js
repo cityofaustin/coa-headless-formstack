@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 
 import Layout from "src/components/Base/layout";
 
-const IndexPage = (props) => {
+const AllForms = (props) => {
   const { forms } = props.pageContext;
   console.log("What are my forms?", forms)
 
@@ -23,4 +23,4 @@ const IndexPage = (props) => {
   );
 };
 
-export default IndexPage;
+export default AllForms;

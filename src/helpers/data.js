@@ -1,4 +1,4 @@
-export const hyphenate = (title) => title.replace(/\s/g, "-").toLowerCase();
+export const hyphenate = (title) => title.replace(/\s/g, "-").replace(/[^\w-]/g, "").toLowerCase();
 
 /**
   Splits fields into 2 arrays.
@@ -30,7 +30,7 @@ export const getPages = (fields, pathPrefix) => {
     const result = getFieldsForOnePage(fieldsForNextPages);
     const fields = result.fieldsForOnePage;
     const heading = fields[0].section_heading;
-    const path = `${pathPrefix}/${pages.length}`;
+    const path = `${pathPrefix}/${hyphenate(heading)}`;
     pages.push({ fields, heading, path, });
     fieldsForNextPages = result.fieldsForNextPages;
   }
