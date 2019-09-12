@@ -6,8 +6,8 @@ import FormPage from 'src/components/FormPage/FormPage';
 import FormLandingPage from 'src/components/sections/FormLandingPage';
 import FormHeader from 'src/components/sections/FormHeader';
 import { formatFieldsAndPages } from 'src/helpers/data';
-import { setFieldInitialValue } from 'src/helpers/fieldMap';
-import { SET_INITIAL_FIELDS } from 'src/redux/actions';
+import { getFieldInitialValues } from 'src/helpers/fieldMap';
+import { SET_INITIAL_FIELD_VALUES } from 'src/redux/actions';
 
 const FormContainer = (props) => {
   const dispatch = useDispatch();
@@ -17,10 +17,9 @@ const FormContainer = (props) => {
 
   // Populate our redux store with initial values for each form field
   useEffect(()=>{
-    const fieldInitialValues = fields.reduce(setFieldInitialValue,{});
     dispatch({
-      type: SET_INITIAL_FIELDS,
-      fields: fieldInitialValues,
+      type: SET_INITIAL_FIELD_VALUES,
+      fields: getFieldInitialValues(fields),
     });
   },[dispatch, preprocessedFields]);
 

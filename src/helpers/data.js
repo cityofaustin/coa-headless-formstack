@@ -41,7 +41,7 @@ export const formatFieldsAndPages = (fields, pathPrefix) => {
     }
     const title = fields[0].section_heading;
     const path = `${pathPrefix}/${sanitizePath(title)}`;
-    pages.push({ fields, path, });
+    pages.push({ fields, path, title });
   }
   return {
     pages,

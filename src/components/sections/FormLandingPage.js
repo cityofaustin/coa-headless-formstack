@@ -15,7 +15,7 @@ const FormLandingPage = ({name, pages}) => {
             <Link
               to={page.path}
             >
-              {page.heading}
+              {page.title}
             </Link>
           </li>
         ))}

@@ -18,7 +18,7 @@ const FieldContainer = ({ field }) => {
 
   const FieldComponent = getFieldComponent(field);
 
-  // Don't render FieldComponent until useEffect() to build form fields has finished
+  // Don't render FieldComponent until useEffect() to build form field values has finished
   return (value !== undefined) ? (
     <div className='coa-FieldContainer__container'>
       {field.label}

@@ -45,10 +45,12 @@ export const getFieldComponent = (field) => {
   return (fieldMap[field.type] || fieldMap.coa_test_fallback).component;
 }
 
-export const setFieldInitialValue = (fieldInitialValues, field) => {
-  const initialValue = (fieldMap[field.type] || fieldMap.coa_test_fallback).initialValue;
-  if (initialValue !== NOT_A_FORM_FIELD) {
-    fieldInitialValues[field.id] = initialValue;
-  }
-  return fieldInitialValues;
+export const getFieldInitialValues = (fields) => {
+  return fields.reduce((fieldInitialValues, field) => {
+    const initialValue = (fieldMap[field.type] || fieldMap.coa_test_fallback).initialValue;
+    if (initialValue !== NOT_A_FORM_FIELD) {
+      fieldInitialValues[field.id] = initialValue;
+    }
+    return fieldInitialValues;
+  }, {});
 }

@@ -1,12 +1,12 @@
 import {
-  SET_INITIAL_FIELDS,
+  SET_INITIAL_FIELD_VALUES,
   UPDATE_FIELD_VALUE,
   SET_LANG,
 } from 'src/redux/actions';
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case SET_INITIAL_FIELDS:
+    case SET_INITIAL_FIELD_VALUES:
       return { ...state, fields: action.fields };
     case UPDATE_FIELD_VALUE:
       return { ...state, fields: { ...state.fields, [action.id]: action.value }};
