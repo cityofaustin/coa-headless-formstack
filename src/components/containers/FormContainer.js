@@ -5,31 +5,26 @@ import { Router, Redirect } from '@reach/router';
 import FormPage from 'src/components/FormPage/FormPage';
 import FormLandingPage from 'src/components/sections/FormLandingPage';
 import FormHeader from 'src/components/sections/FormHeader';
-import { getPages } from 'src/helpers/data';
-import { getFieldInitialValue } from 'src/helpers/fieldMap';
+import { formatFieldsAndPages } from 'src/helpers/data';
+import { setFieldInitialValue } from 'src/helpers/fieldMap';
 import { SET_INITIAL_FIELDS } from 'src/redux/actions';
 
 const FormContainer = (props) => {
   const dispatch = useDispatch();
   const { data } = props.pageContext;
-  const { fields, coaConfig: {name, pathPrefix} } = data;
-  const pages = getPages(fields, pathPrefix);
+  const { fields: preprocessedFields, coaConfig: {name, pathPrefix} } = data;
+  const {fields, pages} = formatFieldsAndPages(preprocessedFields, pathPrefix);
 
   // Populate our redux store with initial values for each form field
   useEffect(()=>{
-    const initialFieldValues = fields.reduce((initialFieldValues, field)=>{
-      if (field.type !== "section") {
-        initialFieldValues[field.id] = getFieldInitialValue(field);
-      }
-      return initialFieldValues;
-    },{});
-
+    const fieldInitialValues = fields.reduce(setFieldInitialValue,{});
     dispatch({
       type: SET_INITIAL_FIELDS,
-      fields: initialFieldValues,
+      fields: fieldInitialValues,
     });
   },[dispatch, fields]);
 
+  console.log("What my soul, pages?",pages)
   return (
     <div>
       <FormHeader
@@ -44,7 +39,7 @@ const FormContainer = (props) => {
         {pages.map((page, i)=>(
           <FormPage
             key={i}
-            pageNumber={i}
+            pageIndex={i}
             path={page.path}
             fields={page.fields}
             pages={pages}

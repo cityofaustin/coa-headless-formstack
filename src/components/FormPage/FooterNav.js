@@ -4,8 +4,8 @@ import { Link } from '@reach/router';
 import Button from 'src/components/sections/Button';
 import 'src/components/FormPage/FooterNav.scss';
 
-const FooterNav = ({ pageNumber, landingPagePath, pages }) => {
-  const backPath = (pageNumber === 0) ? landingPagePath : pages[pageNumber-1].path;
+const FooterNav = ({ pageIndex, landingPagePath, pages }) => {
+  const backPath = (pageIndex === 0) ? landingPagePath : pages[pageIndex-1].path;
   const backButton = (
     <Button>
       <Link
@@ -16,9 +16,9 @@ const FooterNav = ({ pageNumber, landingPagePath, pages }) => {
     </Button>
   );
 
-  const { nextPath, nextText } = (pageNumber === pages.length-1) ?
+  const { nextPath, nextText } = (pageIndex === pages.length-1) ?
     { nextPath: '#', nextText: 'Submit' } :
-    { nextPath: pages[pageNumber+1].path, nextText: 'Continue' }
+    { nextPath: pages[pageIndex+1].path, nextText: 'Continue' }
   const nextButton = (
     <Button>
       <Link

@@ -6,8 +6,8 @@ import { getFieldComponent } from 'src/helpers/fieldMap';
 import 'src/components/containers/FieldContainer.scss';
 
 const FieldContainer = ({ field }) => {
-  const dispatch = useDispatch();
   const value = useSelector(state => state.fields[field.id]);
+  const dispatch = useDispatch();
   const onChange = (value) => {
     return dispatch({
       type: UPDATE_FIELD_VALUE,

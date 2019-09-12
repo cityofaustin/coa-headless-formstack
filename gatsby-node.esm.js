@@ -5,6 +5,10 @@ const forms = [
     name: 'police-complain',
     id: 3568666,
   },
+  {
+    name: 'nick-test',
+    id: 3585883,
+  }
 ];
 
 exports.createPages = async ({ actions: { createPage } }) => {

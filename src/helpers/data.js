@@ -1,4 +1,4 @@
-export const sanitizeUrl = (heading) => heading.replace(/\s/g, "-").replace(/[^\w-]/g, "").toLowerCase();
+const sanitizePath = (title) => title.replace(/\s/g, "-").replace(/[^\w-]/g, "").toLowerCase();
 
 /**
   Splits fields into 2 arrays.
@@ -6,11 +6,11 @@ export const sanitizeUrl = (heading) => heading.replace(/\s/g, "-").replace(/[^\
   fieldsForNextPages => fields after the section_break (page break) that are used on following FormPages
 **/
 const getFieldsForOnePage = (fields) => {
-  let i=1; // fields[0] is expected to have a section_break in multipage forms
+  let i=0; // fields[0] is expected to have a section_break in multipage forms
   let fieldsForOnePage = fields;
   let fieldsForNextPages = [];
   while (i < fields.length) {
-    if (!!fields[i].section_break) {
+    if (i>0 && !!fields[i].section_break) {
       fieldsForOnePage = fields.slice(0,i);
       fieldsForNextPages = fields.slice(i);
       break;
@@ -23,16 +23,28 @@ const getFieldsForOnePage = (fields) => {
   }
 }
 
-export const getPages = (fields, pathPrefix) => {
+export const formatFieldsAndPages = (fields, pathPrefix) => {
   const pages = [];
   let fieldsForNextPages = fields;
   while (fieldsForNextPages.length) {
     const result = getFieldsForOnePage(fieldsForNextPages);
     const fields = result.fieldsForOnePage;
-    const heading = fields[0].section_heading;
-    const path = `${pathPrefix}/${sanitizeUrl(heading)}`;
-    pages.push({ fields, heading, path, });
     fieldsForNextPages = result.fieldsForNextPages;
+    // If a Form Page doesn't start with a Formstack "section" field, then make a default
+    if (fields[0].type !== "section") {
+      fields.unshift({
+        type: "section",
+        section_break: true,
+        section_heading: `Page ${pages.length+1}`,
+        section_text: "",
+      })
+    }
+    const title = fields[0].section_heading;
+    const path = `${pathPrefix}/${sanitizePath(title)}`;
+    pages.push({ fields, path, });
   }
-  return pages;
+  return {
+    pages,
+    fields: pages.flat(),
+  }
 };
