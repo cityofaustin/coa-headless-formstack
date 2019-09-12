@@ -45,6 +45,6 @@ export const formatFieldsAndPages = (fields, pathPrefix) => {
   }
   return {
     pages,
-    fields: pages.flat(),
+    fields: pages.reduce((fields, page)=>[...fields, ...page.fields],[]),
   }
 };

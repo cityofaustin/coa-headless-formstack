@@ -7,14 +7,16 @@ const Checkbox = (props) => {
     value,
   } = props;
 
+  const values = value.split('/n');
+
   // This will only work for one checkbox
   // at best
-  const _onChange = (e) => {
-    const selectedValue = e.target.value;
-    if (value === selectedValue) {
-      onChange('');
+  const _onChange = ({ target: { value } }) => {
+    const index = values.indexOf(value);
+    if (index !== -1) {
+      onChange(values.push(value).join('/n'));
     } else {
-      onChange(selectedValue);
+      onChange([...values.slice(0,index), ...values.slice(index+1)].join('/n'));
     }
   }
 
@@ -26,7 +28,7 @@ const Checkbox = (props) => {
             className="form-checkbox"
             onChange={_onChange}
             value={option.value}
-            checked={value === option.value}
+            checked={values.includes(option.value)}
             type="checkbox"
           />
           {option.label}

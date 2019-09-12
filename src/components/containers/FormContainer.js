@@ -22,9 +22,8 @@ const FormContainer = (props) => {
       type: SET_INITIAL_FIELDS,
       fields: fieldInitialValues,
     });
-  },[dispatch, fields]);
+  },[dispatch, preprocessedFields]);
 
-  console.log("What my soul, pages?",pages)
   return (
     <div>
       <FormHeader

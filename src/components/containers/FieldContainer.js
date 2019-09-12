@@ -12,14 +12,14 @@ const FieldContainer = ({ field }) => {
     return dispatch({
       type: UPDATE_FIELD_VALUE,
       id: field.id,
-      value: value
+      value: value,
     })
   };
 
-  console.log("eryThing", useSelector(state => state));
   const FieldComponent = getFieldComponent(field);
 
-  return (
+  // Don't render FieldComponent until useEffect() to build form fields has finished
+  return (value !== undefined) ? (
     <div className='coa-FieldContainer__container'>
       {field.label}
       <FieldComponent
@@ -28,6 +28,8 @@ const FieldContainer = ({ field }) => {
         onChange={onChange}
       />
     </div>
+  ) : (
+    <></>
   );
 };
 
