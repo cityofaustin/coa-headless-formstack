@@ -5,13 +5,7 @@ import TextArea from 'src/components/fields/Basic/TextArea';
 import Checkbox from 'src/components/fields/Basic/Checkbox';
 import SectionHeading from 'src/components/FormPage/SectionHeading';
 
-const CoaFallbackComponent = (props) => (
-  <div>
-    404! We can't render {props.field.type} yet.
-  </div>
-);
-
-const NOT_A_FORM_FIELD = 'NOT_A_FORM_FIELD';
+import { NOT_A_FORM_FIELD } from 'src/helpers/constants';
 
 // map from FormStack types to our components
 const fieldMap = {
@@ -36,13 +30,17 @@ const fieldMap = {
     initialValue: NOT_A_FORM_FIELD,
   },
   'coa_test_fallback': {
-    component: CoaFallbackComponent,
+    component: (props) => (
+      <div>
+        404! We can't render {props.field.type} yet.
+      </div>
+    ),
     initialValue: null,
   }
 };
 
-export const getFieldComponent = (field) => {
-  return (fieldMap[field.type] || fieldMap.coa_test_fallback).component;
+export const getFieldData = (field) => {
+  return (fieldMap[field.type] || fieldMap.coa_test_fallback)
 }
 
 export const getFieldInitialValues = (fields) => {
