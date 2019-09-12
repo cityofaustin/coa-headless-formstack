@@ -14,6 +14,7 @@ const Text = (props) => {
 
   return (
     <input
+      type="text"
       className='coa-Text__input'
       onChange={_onChange}
       value={value}

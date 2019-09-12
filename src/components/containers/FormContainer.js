@@ -6,6 +6,7 @@ import FormPage from 'src/components/FormPage/FormPage';
 import FormLandingPage from 'src/components/sections/FormLandingPage';
 import FormHeader from 'src/components/sections/FormHeader';
 import { getPages } from 'src/helpers/data';
+import { getFieldInitialValue } from 'src/helpers/fieldMap';
 import { SET_INITIAL_FIELDS } from 'src/redux/actions';
 
 const FormContainer = (props) => {
@@ -17,11 +18,13 @@ const FormContainer = (props) => {
   // Populate our redux store with initial values for each form field
   useEffect(()=>{
     const initialFieldValues = fields.reduce((initialFieldValues, field)=>{
-      if (field.type !== "section") {
-        initialFieldValues[field.id]=null;
+      const { id, type } = field;
+      if (type !== "section") {
+        initialFieldValues[id] = getFieldInitialValue(type);
       }
       return initialFieldValues;
     },{});
+
     dispatch({
       type: SET_INITIAL_FIELDS,
       fields: initialFieldValues,

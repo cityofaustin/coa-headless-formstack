@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import FieldRouter from 'src/components/containers/FieldRouter';
 import { UPDATE_FIELD_VALUE } from 'src/redux/actions';
+import { getFieldComponent } from 'src/helpers/fieldMap';
 import 'src/components/containers/FieldContainer.scss';
 
 const FieldContainer = ({ field }) => {
@@ -16,13 +16,13 @@ const FieldContainer = ({ field }) => {
     })
   };
 
-  const wholeThing = useSelector(state => state);
-  console.log("eryThing", wholeThing);
+  console.log("eryThing", useSelector(state => state));
+  const FieldComponent = getFieldComponent(field.type);
 
   return (
     <div className='coa-FieldContainer__container'>
       {field.label}
-      <FieldRouter
+      <FieldComponent
         field={field}
         value={value}
         onChange={onChange}
