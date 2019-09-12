@@ -10,7 +10,7 @@ const Text = (props) => {
 
   const _onChange = ({ target: { value } }) => {
     return onChange(value);
-  }
+  };
 
   return (
     <input

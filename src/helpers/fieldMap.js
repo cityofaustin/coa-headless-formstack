@@ -22,7 +22,7 @@ const fieldMap = {
   },
   'checkbox': {
     component: Checkbox,
-    initialValue: null,
+    initialValue: '',
   },
   'datetime': {
     component: Text,
@@ -34,10 +34,10 @@ const fieldMap = {
   }
 };
 
-export const getFieldComponent = (type) => {
-  return (fieldMap[type] || fieldMap.coa_test_fallback).component;
+export const getFieldComponent = (field) => {
+  return (fieldMap[field.type] || fieldMap.coa_test_fallback).component;
 }
 
-export const getFieldInitialValue = (type) => {
-  return (fieldMap[type] || fieldMap.coa_test_fallback).initialValue;
+export const getFieldInitialValue = (field) => {
+  return (fieldMap[field.type] || fieldMap.coa_test_fallback).initialValue;
 }

@@ -18,9 +18,8 @@ const FormContainer = (props) => {
   // Populate our redux store with initial values for each form field
   useEffect(()=>{
     const initialFieldValues = fields.reduce((initialFieldValues, field)=>{
-      const { id, type } = field;
-      if (type !== "section") {
-        initialFieldValues[id] = getFieldInitialValue(type);
+      if (field.type !== "section") {
+        initialFieldValues[field.id] = getFieldInitialValue(field);
       }
       return initialFieldValues;
     },{});

@@ -17,7 +17,7 @@ const FieldContainer = ({ field }) => {
   };
 
   console.log("eryThing", useSelector(state => state));
-  const FieldComponent = getFieldComponent(field.type);
+  const FieldComponent = getFieldComponent(field);
 
   return (
     <div className='coa-FieldContainer__container'>
