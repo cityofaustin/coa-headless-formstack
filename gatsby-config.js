@@ -28,6 +28,13 @@ module.exports = {
       },
     },
     `gatsby-plugin-sass`,
-    "gatsby-plugin-root-import",
+    `gatsby-plugin-root-import`,
+    {
+      resolve: `gatsby-plugin-page-creator`,
+      options: {
+        path: `${__dirname}/src/staticPages`,
+        ignore: [`forms.js`], // forms.js will have a custom context provided
+      },
+    },
   ],
 }

@@ -10,12 +10,12 @@ const forms = [
 exports.createPages = async ({ actions: { createPage } }) => {
   createPage({
     path: `/`,
-    component: require.resolve("./src/pages/index.js"),
+    component: require.resolve("./src/staticPages/index.js"),
   });
 
   createPage({
     path: `/forms`,
-    component: require.resolve("./src/pages/forms.js"),
+    component: require.resolve("./src/staticPages/forms.js"),
     context: { forms },
   });
 
