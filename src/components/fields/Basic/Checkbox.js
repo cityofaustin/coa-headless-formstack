@@ -7,15 +7,15 @@ const Checkbox = (props) => {
     value,
   } = props;
 
-  const values = value.split('/n');
+  const values = !!value ? value.split('/n') : [];
 
-  // This will only work for one checkbox
-  // at best
   const _onChange = ({ target: { value } }) => {
     const index = values.indexOf(value);
-    if (index !== -1) {
-      onChange(values.push(value).join('/n'));
+    if (index === -1) {
+      // If option was not selected, then add it.
+      onChange([...values, value].join('/n'));
     } else {
+      // If option was already selected, then remove it.
       onChange([...values.slice(0,index), ...values.slice(index+1)].join('/n'));
     }
   }

@@ -23,7 +23,7 @@ const getFieldsForOnePage = (fields) => {
   }
 }
 
-export const formatFieldsAndPages = (fields, pathPrefix) => {
+const formatFieldsAndPages = (fields, pathPrefix) => {
   const pages = [];
   let fieldsForNextPages = fields;
   while (fieldsForNextPages.length) {
@@ -48,3 +48,5 @@ export const formatFieldsAndPages = (fields, pathPrefix) => {
     fields: pages.reduce((fields, page)=>[...fields, ...page.fields],[]),
   }
 };
+
+export default formatFieldsAndPages;

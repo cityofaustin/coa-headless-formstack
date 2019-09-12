@@ -40,7 +40,7 @@ const fieldMap = {
 };
 
 export const getFieldData = (field) => {
-  return (fieldMap[field.type] || fieldMap.coa_test_fallback)
+  return (fieldMap[field.type] || fieldMap.coa_test_fallback);
 }
 
 export const getFieldInitialValues = (fields) => {
