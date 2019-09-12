@@ -16,12 +16,17 @@ const FormContainer = (props) => {
   const { fields, pages } = formatFieldsAndPages(preprocessedFields, pathPrefix);
 
   // Populate our redux store with initial values for each form field
+  // Note: I deliberately did not add "fields" props as a dependency.
+  // useEffect() does not work for this deeply nested object.
+  // This useEffect will re-trigger, even when my fields props have not changed.
+  // https://github.com/facebook/react/issues/15865
   useEffect(()=>{
     dispatch({
       type: SET_INITIAL_FIELD_VALUES,
       fields: getFieldInitialValues(fields),
     });
-  },[dispatch, fields]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[dispatch]);
 
   return (
     <div>
