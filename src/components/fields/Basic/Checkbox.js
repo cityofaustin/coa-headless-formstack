@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { getMultipleChoiceValues } from 'src/helpers/multipleChoiceHelpers';
+
 const Checkbox = (props) => {
   const {
     field,
@@ -7,7 +9,7 @@ const Checkbox = (props) => {
     value,
   } = props;
 
-  const values = !!value ? value.split('/n') : [];
+  const values = getMultipleChoiceValues(value);
 
   const _onChange = ({ target: { value } }) => {
     const index = values.indexOf(value);
@@ -25,11 +27,10 @@ const Checkbox = (props) => {
       {field.options.map((option, i) => (
         <label key={i}>
           <input
-            className="form-checkbox"
+            type="checkbox"
             onChange={_onChange}
             value={option.value}
             checked={values.includes(option.value)}
-            type="checkbox"
           />
           {option.label}
         </label>

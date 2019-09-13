@@ -18,8 +18,8 @@ const FormContainer = (props) => {
   // Populate our redux store with initial values for each form field
   // Note: I deliberately did not add "fields" props as a dependency.
   // useEffect() does not work for this deeply nested object.
-  // This useEffect will re-trigger, even when my fields props have not changed.
-  // https://github.com/facebook/react/issues/15865
+  // Adding ["fields"] caused this useEffect to re-trigger, even when my fields props had not changed.
+  // https://github.com/facebook/react/issues/15865, https://stackoverflow.com/questions/54095994/react-useeffect-comparing-objects
   useEffect(()=>{
     dispatch({
       type: SET_INITIAL_FIELD_VALUES,

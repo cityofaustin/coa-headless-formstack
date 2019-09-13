@@ -3,6 +3,7 @@ import React from 'react';
 import Text from 'src/components/fields/Basic/Text';
 import TextArea from 'src/components/fields/Basic/TextArea';
 import Checkbox from 'src/components/fields/Basic/Checkbox';
+import Radio from 'src/components/fields/Basic/Radio';
 import SectionHeading from 'src/components/FormPage/SectionHeading';
 
 import { NOT_A_FORM_FIELD } from 'src/helpers/constants';
@@ -19,6 +20,10 @@ const fieldMap = {
   },
   'checkbox': {
     component: Checkbox,
+    initialValue: '',
+  },
+  'radio': {
+    component: Radio,
     initialValue: '',
   },
   'datetime': {
