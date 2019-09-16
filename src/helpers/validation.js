@@ -10,7 +10,7 @@ const runConditional = ({conditional, checks}, fieldValues) => {
   }
 }
 
-// Checks are only run on Radio or Checkbox fields
+// We use getMultipleChoiceValues because checks are only run on Radio or Checkbox fields
 const runCheck = (check, fieldValues) => {
   const values = getMultipleChoiceValues(fieldValues[check.field]);
   if (check.condition === "equals") {

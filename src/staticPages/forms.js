@@ -3,8 +3,6 @@ import { Link } from "gatsby";
 
 const AllForms = (props) => {
   const { forms } = props.pageContext;
-  console.log("What are my forms?", forms)
-
   return (
     <div>
       <h1>Here are all of the forms</h1>
