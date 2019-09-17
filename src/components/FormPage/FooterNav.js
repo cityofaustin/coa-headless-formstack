@@ -4,8 +4,8 @@ import { Link } from '@reach/router';
 import Button from 'src/components/sections/Button';
 import 'src/components/FormPage/FooterNav.scss';
 
-const FooterNav = ({ pageIndex, landingPagePath, pages }) => {
-  const backPath = (pageIndex === 0) ? landingPagePath : pages[pageIndex-1].path;
+const FooterNav = ({ pageIndex, formHomePath, pages }) => {
+  const backPath = (pageIndex === 0) ? formHomePath : pages[pageIndex-1].path;
   const backButton = (
     <Button>
       <Link

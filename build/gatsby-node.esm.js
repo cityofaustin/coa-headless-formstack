@@ -26,10 +26,11 @@ exports.createPages = async ({ actions: { createPage } }) => {
   });
 
   await Promise.all(forms.map(async (form)=>{
-    const { data: { fields: fields } } = await axios.get(
-      `https://www.formstack.com/api/v2/form/${form.id}.json`,
-      { headers: { Authorization: `Bearer ${process.env.FORMSTACK_API_TOKEN}` } },
-    );
+    // const { data: { fields: fields } } = await axios.get(
+    //   `https://www.formstack.com/api/v2/form/${form.id}.json`,
+    //   { headers: { Authorization: `Bearer ${process.env.FORMSTACK_API_TOKEN}` } },
+    // );
+    const { fields } = require('../local/formstackCache.js');
     const formHomePath = `/forms/${form.name}`;
     const pages = parsePages(fields, formHomePath);
     createPage({

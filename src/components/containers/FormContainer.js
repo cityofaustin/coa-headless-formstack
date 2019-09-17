@@ -3,55 +3,40 @@ import { useDispatch } from 'react-redux';
 import { Router, Redirect } from '@reach/router';
 
 import FormPage from 'src/components/FormPage/FormPage';
-import FormLandingPage from 'src/components/sections/FormLandingPage';
+import FormHomePage from 'src/components/sections/FormHomePage';
 import FormHeader from 'src/components/sections/FormHeader';
-import { getFieldInitialValues } from 'src/helpers/fieldMap';
 import { SET_INITIAL_FIELD_VALUES } from 'src/redux/actions';
 
-const FormContainer = (props) => {
+const FormContainer = ({ pageContext: { name, formHomePath, pages }}) => {
   const dispatch = useDispatch();
-  const { name, formHomePath, pages } = props.pageContext;
 
-  // Populate our redux store with initial values for each form field
-  // Note: I deliberately did not add "pages" props as a dependency.
-  // useEffect() does not work for this deeply nested object.
-  // Adding ["pages"] caused this useEffect to re-trigger, even when my pages props had not changed.
-  // https://github.com/facebook/react/issues/15865, https://stackoverflow.com/questions/54095994/react-useeffect-comparing-objects
   useEffect(()=>{
     dispatch({
       type: SET_INITIAL_FIELD_VALUES,
       pages: pages,
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[dispatch]);
-
-  console.log("~~pages", pages)
-
-  return (
-    <div>
-      Hi
-    </div>
-  )
+  },[dispatch, pages]);
 
   return (
     <div>
       <FormHeader
-        landingPagePath={formHomePath}
+        formHomePath={formHomePath}
       />
       <Router>
-        <FormLandingPage
+        <FormHomePage
           path={formHomePath}
           name={name}
           pages={pages}
         />
-        {pages.map((page, i)=>(
+        {pages && pages.map(({path, sectionField, sections}, i)=>(
           <FormPage
             key={i}
             pageIndex={i}
-            path={page.path}
-            fields={page.fields}
+            path={path}
+            sectionField={sectionField}
+            sections={sections}
             pages={pages}
-            landingPagePath={formHomePath}
+            formHomePath={formHomePath}
           />
         ))}
         <Redirect

@@ -11,7 +11,10 @@ const parsePages = (fields, formHomePath) => {
     if ((i === 0) && ((field.type !== "section") || (!field.section_break))) {
       // If the form doesn't have an initial new page section header, make a generic one.
       currentPage = {
-        sectionField: null,
+        sectionField: {
+          section_heading: "Start",
+          hide_label: "1",
+        },
         path: `${formHomePath}/start`,
         sections: [],
       }

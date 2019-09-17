@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import Button from 'src/components/sections/Button';
 import { SET_LANG } from 'src/redux/actions';
 
-const FormHeader = ({ landingPagePath }) => {
+const FormHeader = ({ formHomePath }) => {
   const dispatch = useDispatch();
   const setLang = (lang) => {
     return dispatch({
@@ -18,7 +18,7 @@ const FormHeader = ({ landingPagePath }) => {
     <div>
       <Button onClick={() => setLang("en")}>English</Button>
       <Button onClick={() => setLang("es")}>Spanish</Button>
-      <Link to={landingPagePath}>Home</Link><br/>
+      <Link to={formHomePath}>Home</Link><br/>
     </div>
   );
 };

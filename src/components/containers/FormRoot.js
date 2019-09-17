@@ -7,7 +7,7 @@ import reducer from 'src/redux/reducer';
 
 const store = createStore(reducer, {
   lang: "en",
-  fields: {},
+  fieldValues: {},
 });
 
 const FormRoot = (props) => {

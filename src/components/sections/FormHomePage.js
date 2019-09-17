@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from '@reach/router';
 import { useSelector } from 'react-redux';
 
-const FormLandingPage = ({name, pages}) => {
+const FormHomePage = ({name, pages}) => {
   const lang = useSelector(state => state.lang);
 
   return (
@@ -15,7 +15,7 @@ const FormLandingPage = ({name, pages}) => {
             <Link
               to={page.path}
             >
-              {page.title}
+              {page.sectionField.section_heading}
             </Link>
           </li>
         ))}
@@ -24,4 +24,4 @@ const FormLandingPage = ({name, pages}) => {
   )
 };
 
-export default FormLandingPage;
+export default FormHomePage;
