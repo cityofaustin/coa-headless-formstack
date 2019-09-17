@@ -1,6 +1,6 @@
 import React from 'react';
 
-import 'src/components/sections/Button.scss';
+import 'src/common/Button.scss';
 
 const Button = ({ onClick, children }) => (
   <div onClick={onClick} className='coa-Button__container'>

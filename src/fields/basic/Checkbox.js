@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { getMultipleChoiceValues } from 'src/helpers/multipleChoiceHelpers';
+import getMultipleChoiceValues from 'src/helpers/getMultipleChoiceValues';
 
 const Checkbox = (props) => {
   const {

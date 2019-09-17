@@ -1,4 +1,4 @@
-import { getFieldInitialValue } from 'src/helpers/fieldMap';
+import { getFieldInitialValue } from 'src/fields/fieldMap';
 
 import {
   SET_INITIAL_FIELD_VALUES,

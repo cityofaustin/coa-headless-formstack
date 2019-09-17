@@ -1,11 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import SectionHeading from 'src/components/FormPage/SectionHeading';
-import FormSection from 'src/components/FormPage/FormSection';
-import FooterNav from 'src/components/FormPage/FooterNav';
+import SectionHeading from 'src/FormPage/SectionHeading';
+import FormSection from 'src/FormPage/FormSection';
+import FooterNav from 'src/FormPage/FooterNav';
 
-const FormPage = ({ path, sectionField, sections, pageIndex, formHomePath, pages }) => {
+const FormPage = ({ sectionField, sections, pageIndex, formHomePath, pages }) => {
   const lang = useSelector(state => state.lang);
 
   return (

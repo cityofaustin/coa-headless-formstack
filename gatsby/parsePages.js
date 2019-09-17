@@ -1,5 +1,6 @@
 const sanitizePath = (title) => title.replace(/\s/g, "-").replace(/[^\w-]/g, "").toLowerCase();
 
+// Takes flat array of fields and structures them into pages and sections within pages
 const parsePages = (fields, formHomePath) => {
   let pages = [];
   let currentPage, currentPageSections=[], currentSection, currentSectionFields=[];
@@ -32,7 +33,7 @@ const parsePages = (fields, formHomePath) => {
 
       if (!!field.section_break) {
         // If we're starting a new page, end the last currentPage
-        !!currentPageSections.length && pages.push(currentPage); // logic-y?
+        !!currentPageSections.length && pages.push(currentPage);
 
         // Start a new currentPage
         const pageTitle = field.section_heading;
@@ -56,7 +57,7 @@ const parsePages = (fields, formHomePath) => {
       // Start new array of currentSectionFields
       currentSectionFields = currentSection.fields;
     } else {
-      // If field is not a currentSection, then add it to
+      // If field type is not a section, then add it to currentSectionFields
       currentSectionFields.push(field);
     }
     i++;
@@ -64,7 +65,7 @@ const parsePages = (fields, formHomePath) => {
 
   currentSectionFields.length && currentPageSections.push(currentSection);
   currentPageSections.length && pages.push(currentPage);
-  return pages
+  return pages;
 }
 
 export default parsePages;

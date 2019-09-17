@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from '@reach/router';
 
-import Button from 'src/components/sections/Button';
-import 'src/components/FormPage/FooterNav.scss';
+import Button from 'src/common/Button';
+import 'src/FormPage/FooterNav.scss';
 
 const FooterNav = ({ pageIndex, formHomePath, pages }) => {
   const backPath = (pageIndex === 0) ? formHomePath : pages[pageIndex-1].path;

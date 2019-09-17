@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import classNames from 'classnames';
 
 import { UPDATE_FIELD_VALUE } from 'src/redux/actions';
-import { getFieldComponent } from 'src/helpers/fieldMap';
-import { shouldHide } from 'src/helpers/validation';
-import 'src/components/containers/FieldContainer.scss';
+import { getFieldComponent } from 'src/fields/fieldMap';
+import shouldHide from 'src/fields/validation/shouldHide';
+import 'src/fields/FieldContainer.scss';
 
 const FieldContainer = ({ field }) => {
   const value = useSelector(state => state.fieldValues[field.id]);

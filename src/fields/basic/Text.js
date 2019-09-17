@@ -1,8 +1,8 @@
 import React from 'react';
 
-import 'src/components/fields/Basic/TextArea.scss';
+import 'src/fields/basic/Text.scss';
 
-const TextArea = (props) => {
+const Text = (props) => {
   const {
     onChange,
     value,
@@ -10,15 +10,16 @@ const TextArea = (props) => {
 
   const _onChange = ({ target: { value } }) => {
     return onChange(value);
-  }
+  };
 
   return (
-    <textarea
-      className='coa-TextArea__textarea'
+    <input
+      type="text"
+      className='coa-Text__input'
       onChange={_onChange}
       value={value}
     />
   )
 };
 
-export default TextArea;
+export default Text;

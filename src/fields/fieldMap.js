@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Text from 'src/components/fields/Basic/Text';
-import TextArea from 'src/components/fields/Basic/TextArea';
-import Checkbox from 'src/components/fields/Basic/Checkbox';
-import Radio from 'src/components/fields/Basic/Radio';
+import Text from 'src/fields/basic/Text';
+import TextArea from 'src/fields/basic/TextArea';
+import Checkbox from 'src/fields/basic/Checkbox';
+import Radio from 'src/fields/basic/Radio';
 
 // map from FormStack types to our components
 const fieldMap = {
@@ -24,6 +24,10 @@ const fieldMap = {
     initialValue: '',
   },
   'datetime': {
+    component: Text,
+    initialValue: '',
+  },
+  'email': {
     component: Text,
     initialValue: '',
   },

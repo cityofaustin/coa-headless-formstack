@@ -1,7 +1,7 @@
 import React from 'react';
 
-import SectionHeading from 'src/components/FormPage/SectionHeading';
-import FieldContainer from 'src/components/containers/FieldContainer';
+import SectionHeading from 'src/FormPage/SectionHeading';
+import FieldContainer from 'src/fields/FieldContainer';
 
 const FormSection = ({ section: { sectionField, fields } }) => {
   return (

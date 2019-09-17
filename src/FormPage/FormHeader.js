@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from '@reach/router';
 import { useDispatch } from 'react-redux';
 
-import Button from 'src/components/sections/Button';
+import Button from 'src/common/Button';
 import { SET_LANG } from 'src/redux/actions';
 
 const FormHeader = ({ formHomePath }) => {

@@ -2,14 +2,15 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Router, Redirect } from '@reach/router';
 
-import FormPage from 'src/components/FormPage/FormPage';
-import FormHomePage from 'src/components/sections/FormHomePage';
-import FormHeader from 'src/components/sections/FormHeader';
+import FormPage from 'src/FormPage/FormPage';
+import FormHomePage from 'src/FormPage/FormHomePage';
+import FormHeader from 'src/FormPage/FormHeader';
 import { SET_INITIAL_FIELD_VALUES } from 'src/redux/actions';
 
 const FormContainer = ({ pageContext: { name, formHomePath, pages }}) => {
   const dispatch = useDispatch();
 
+  // Initialize state.fieldValues on page start up.
   useEffect(()=>{
     dispatch({
       type: SET_INITIAL_FIELD_VALUES,

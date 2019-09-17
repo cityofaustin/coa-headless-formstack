@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
-import FormContainer from 'src/components/containers/FormContainer';
+import FormContainer from 'src/FormContainer/FormContainer';
 import reducer from 'src/redux/reducer';
 
 const store = createStore(reducer, {
@@ -10,7 +10,7 @@ const store = createStore(reducer, {
   fieldValues: {},
 });
 
-const FormRoot = (props) => {
+const FormContainerProvider = (props) => {
   return (
     <Provider store={store}>
       <FormContainer {...props} />
@@ -18,4 +18,4 @@ const FormRoot = (props) => {
   );
 };
 
-export default FormRoot;
+export default FormContainerProvider;
